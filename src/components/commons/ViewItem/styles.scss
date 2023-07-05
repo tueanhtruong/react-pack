@@ -1,0 +1,15 @@
+.cmp-view-item {
+  &__label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #00000080;
+    line-height: 24px;
+  }
+
+  &__value {
+    font-size: 14px;
+    white-space: pre-line;
+  }
+
+
+}
