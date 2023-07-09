@@ -91,7 +91,7 @@ const tableData = [
     price: "$930",
   },
 ];
-const temp1obj1 = {
+export const temp1obj1 = {
   imgUrl:
     "https://pesticides-web-storage-develop.s3.us-west-2.amazonaws.com/public/logo-splash.svg",
   registerId: "REG03",
@@ -106,14 +106,27 @@ const temp1obj1 = {
   tableData,
 };
 
-const template1Func = Handlebars.compile(template1);
+export const template1Func = Handlebars.compile(template1);
 
 const PdfButton = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const receiptRef = useRef<HTMLDivElement>(null);
+  const receiptRef1 = useRef<HTMLDivElement>(null);
+  const receiptRef2 = useRef<HTMLDivElement>(null);
+  const receiptRef3 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (ref.current) {
-      ref.current.innerHTML = template1Func(temp1obj1);
+    if (receiptRef.current) {
+      receiptRef.current.innerHTML = template1Func(temp1obj1);
+    }
+    if (receiptRef1.current) {
+      receiptRef1.current.innerHTML = template1Func(temp1obj1);
+    }
+    if (receiptRef2.current) {
+      receiptRef2.current.innerHTML = template1Func(temp1obj1);
+    }
+    if (receiptRef3.current) {
+      receiptRef3.current.innerHTML = template1Func(temp1obj1);
     }
   }, []);
 
@@ -123,10 +136,14 @@ const PdfButton = () => {
         trigger={() => {
           return <button>Print a pdf</button>;
         }}
+        pageStyle={"margin: 8px"}
         content={() => ref.current}
       />
-      <div style={{ marginTop: 40 }}>
-        <div ref={ref} />
+      <div style={{ marginTop: 40 }} ref={ref}>
+        <div ref={receiptRef} />
+        <div ref={receiptRef1} />
+        <div ref={receiptRef2} />
+        <div ref={receiptRef3} />
       </div>
     </div>
   );
