@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom/client";
-import { ComponentPrinter, PdfButton } from "./components";
+import { StepperPage } from "./containers";
 import "./styles.scss";
 
-ReactDOM.createRoot(document.getElementById("root")).render(<PdfButton />);
-ReactDOM.createRoot(document.getElementById("root-logo")).render(
-  <ComponentPrinter />
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <StepperPage />
 );

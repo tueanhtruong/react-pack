@@ -1,26 +1,28 @@
-import React from "react";
 import cn from "classnames";
+import React from "react";
 import "./styles.scss";
 
-const View: React.FC<ViewProps> = ({
-  children,
-  className,
-  isRow,
-  isRowWrap,
-  justify = "flex-start",
-  align = "",
-  renderIf = true,
-  flexGrow = 0,
-  style,
-  forwardRef = undefined,
-  fullWidth,
-  ...props
-}) => {
+const View = React.forwardRef<HTMLDivElement, ViewProps>(function ViewRender(
+  {
+    children,
+    className,
+    isRow,
+    isRowWrap,
+    justify = "flex-start",
+    align = "",
+    renderIf = true,
+    flexGrow = 0,
+    style,
+    fullWidth,
+    ...props
+  },
+  ref
+) {
   if (!renderIf) return null;
 
   return (
     <div
-      ref={forwardRef}
+      ref={ref}
       className={cn(
         "cmp-view",
         {
@@ -38,7 +40,7 @@ const View: React.FC<ViewProps> = ({
       {children}
     </div>
   );
-};
+});
 
 export type ViewProps = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLDivElement>,

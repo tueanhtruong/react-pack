@@ -53,6 +53,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
     alias: {
       handlebars: "handlebars/dist/handlebars.js",
+      src: path.resolve(__dirname, "src/"),
     },
   },
   plugins: [
