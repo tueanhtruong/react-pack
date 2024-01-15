@@ -58,6 +58,22 @@ const DemoStepper: React.FC = () => {
   return (
     <View className="view-container">
       <View>
+        <p>Stepper</p>
+        <br />
+        <Stepper.Wrapper>
+          {steps.slice(0, 4).map((step) => (
+            <Stepper.StepButton
+              label={step.label}
+              key={`${step.label}-${step.description}`}
+            >
+              <View isRowWrap align="flex-start" style={{ gap: "0.5rem" }}>
+                <p style={{ fontSize: "0.9rem" }}>{step.description}</p>
+              </View>
+            </Stepper.StepButton>
+          ))}
+        </Stepper.Wrapper>
+      </View>
+      <View>
         <p>Default Stepper</p>
         <br />
         <Stepper.Wrapper>

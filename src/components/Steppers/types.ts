@@ -45,3 +45,11 @@ export type StepperContextProps = {
   onSelectStep: (stepIndex: number) => void;
   renderIcon?: (props: RenderIconProps) => React.ReactNode;
 };
+
+export type ConnectorProps = {
+  orientation?: "horizontal" | "vertical";
+  active?: boolean;
+  completed?: boolean;
+  state?: "error" | "success";
+  position: "left" | "right";
+};

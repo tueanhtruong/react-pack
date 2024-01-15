@@ -3,12 +3,13 @@ import classNames from "classnames";
 import React, { PropsWithChildren } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import { View } from "../commons";
+import Connector from "./Connector";
 import { useStepperContext } from "./context";
 import "./styles.scss";
 import { RenderIconProps, StepButtonProps } from "./types";
 
 const StepperIcon: React.FC<PropsWithChildren<RenderIconProps>> = () => {
-  return <FaRegDotCircle />;
+  return <FaRegDotCircle size={"1.25rem"} />;
 };
 
 const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
@@ -27,10 +28,10 @@ const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
   const { ref: listItemRef, index } = useListItem({ label });
   const isStepActive = index === activeStep;
   const isStepCompleted = index < activeStep;
-  const isRightConnectorActive = index === activeStep - 1;
+  const isRightConnectorActive = isStepActive;
   const isLeftConnectorActive = isStepActive;
   const isLeftConnectorCompleted = isStepCompleted;
-  const isRightConnectorCompleted = index < activeStep - 1;
+  const isRightConnectorCompleted = isStepCompleted;
   const isDisabledStep = index > maxAvailableStep;
   const mergeRef = useMergeRefs([buttonRef, listItemRef]);
 
@@ -54,11 +55,11 @@ const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
       onClick={() => onSelectStep(index)}
     >
       <View className={classNames("stepper__icon__wrapper", orientation)}>
-        <span
-          className={classNames("stepper__connector", orientation, {
-            active: isLeftConnectorActive,
-            completed: isLeftConnectorCompleted,
-          })}
+        <Connector
+          position="left"
+          active={isLeftConnectorActive}
+          completed={isLeftConnectorCompleted}
+          orientation={orientation}
         />
         <IconProp
           {...{
@@ -68,11 +69,11 @@ const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
             completed: isStepCompleted,
           }}
         />
-        <span
-          className={classNames("stepper__connector", orientation, {
-            active: isRightConnectorActive,
-            completed: isRightConnectorCompleted,
-          })}
+        <Connector
+          position="right"
+          active={isRightConnectorActive}
+          completed={isRightConnectorCompleted}
+          orientation={orientation}
         />
       </View>
       <View className={classNames("stepper__label__wrapper", orientation)}>
