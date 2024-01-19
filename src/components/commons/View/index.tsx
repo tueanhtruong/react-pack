@@ -11,7 +11,7 @@ const View = React.forwardRef<HTMLDivElement, ViewProps>(function ViewRender(
     justify = "flex-start",
     align = "",
     renderIf = true,
-    flexGrow = 0,
+    flexGrow,
     style,
     fullWidth,
     ...props

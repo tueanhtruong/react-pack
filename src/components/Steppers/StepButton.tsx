@@ -35,15 +35,6 @@ const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
   const isDisabledStep = index > maxAvailableStep;
   const mergeRef = useMergeRefs([buttonRef, listItemRef]);
 
-  // useEffect(() => {
-  //   if (isStepActive && buttonRef.current) {
-  //     buttonRef.current.scrollIntoView({
-  //       behavior: "smooth",
-  //       inline: "center",
-  //     });
-  //   }
-  // }, [isStepActive]);
-
   return (
     <View
       ref={mergeRef}
@@ -53,6 +44,7 @@ const StepButton: React.FC<PropsWithChildren<StepButtonProps>> = ({
         disabled: isDisabledStep,
       })}
       onClick={() => onSelectStep(index)}
+      flexGrow={1}
     >
       <View className={classNames("stepper__icon__wrapper", orientation)}>
         <Connector

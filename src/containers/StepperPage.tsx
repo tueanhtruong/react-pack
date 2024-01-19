@@ -61,7 +61,7 @@ const DemoStepper: React.FC = () => {
         <p>Stepper</p>
         <br />
         <Stepper.Wrapper>
-          {steps.slice(0, 6).map((step) => (
+          {steps.slice(0, 3).map((step) => (
             <Stepper.StepButton
               label={step.label}
               key={`${step.label}-${step.description}`}
